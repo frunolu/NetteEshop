@@ -1,5 +1,5 @@
 <?php
-
+$a = 'test';
 $container = require __DIR__ . '/../App/bootstrap.php';
 
 $container->getByType(Nette\Application\Application::class)
