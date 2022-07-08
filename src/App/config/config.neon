@@ -22,3 +22,12 @@ migrations:
 
 includes:
     - service.neon
+#    - doctrine.neon
+
+#console:
+ #   name: Nette project
+  #  version: '1.0'
+ #   catchExceptions: True
+ #   autoExit: true
+ #   url: http://nette-shop:90/
+#    lazy:false

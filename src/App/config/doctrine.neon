@@ -94,13 +94,13 @@ doctrine.dbal:
 #    configuration:
 #      autoGenerateProxyClasses: %debugMode%
 
-nettrine.migrations:
-    table: <string>
-    column: <string>
-    directory: <path>
-    namespace: <string>
+#nettrine.migrations:
+#    table: <string>
+#    column: <string>
+#    directory: <path>
+#    namespace: <string>
 #   versionsOrganization: null|'year'|'year_and_month'
-    customTemplate: <null|path>
+#    customTemplate: <null|path>
 
 # minimal configuration
 # nettrine.migrations:
