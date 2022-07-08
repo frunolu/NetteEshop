@@ -1,0 +1,107 @@
+extensions:
+    doctrine.annotations: Nettrine\Annotations\DI\AnnotationsExtension
+    nettrine.cache: Nettrine\Cache\DI\CacheExtension
+    nettrine.migrations: Nettrine\Migrations\DI\MigrationsExtension
+    nettrine.fixtures: Nettrine\Fixtures\DI\FixturesExtension
+    doctrine.dbal: Nettrine\DBAL\DI\DbalExtension
+    doctrine.dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension
+    nettrine.orm: Nettrine\ORM\DI\OrmExtension
+    nettrine.orm.cache: Nettrine\ORM\DI\OrmCacheExtension
+#   doctrine.cache: Nettrine\Cache\DI\CacheExtension
+    doctrine.orm.console: Nettrine\ORM\DI\OrmConsoleExtension
+    nettrine.orm.annotations: Nettrine\ORM\DI\OrmAnnotationsExtension
+
+# nettrine.orm.annotations:
+#  mapping: [
+#    namespace: path
+#  ]
+#  excluded: []
+
+nettrine.orm.annotations:
+  mapping:
+   App\Model\Database: %appDir%/Model/Database
+
+
+# Extension > Nettrine
+# => order is crucial
+#
+#extensions:
+# Common
+#  nettrine.annotations: Nettrine\Annotations\DI\AnnotationsExtension
+#  nettrine.cache: Nettrine\Cache\DI\CacheExtension
+#  nettrine.migrations: Nettrine\Migrations\DI\MigrationsExtension
+#  nettrine.fixtures: Nettrine\Fixtures\DI\FixturesExtension
+
+# # DBAL
+# nettrine.dbal: Nettrine\DBAL\DI\DbalExtension
+# nettrine.dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension
+
+#   ORM
+# nettrine.orm: Nettrine\ORM\DI\OrmExtension
+# nettrine.orm.cache: Nettrine\ORM\DI\OrmCacheExtension
+# nettrine.orm.console: Nettrine\ORM\DI\OrmConsoleExtension
+  #nettrine.orm.annotations: Nettrine\ORM\DI\OrmAnnotationsExtension
+
+# doctrine.orm.annotations:
+# mapping:
+#      App\Model: %appDir%/Model # Adresar kde to zacne hladat entity
+
+doctrine.dbal:
+    debug:
+        panel: %debugMode%
+    connection:
+        driver: pdo_mysql
+        host: %doctrine.host%
+        user: %doctrine.user%
+        password: %doctrine.password%
+        dbname: %doctrine.dbname%
+
+#nettrine.orm.cache:
+#  defaultDriver: App\DefaultOrmCacheDriver
+#  resultCache: App\SpecialOtherDriver
+# hydrationCache: App\SpecialDriver('foo')
+# metadataCache: @cacheDriver
+# secondLevelCache: @cacheConfigurationFactory::create('bar')
+
+# nettrine.orm:
+# configuration:
+# proxyDir: <path>
+# autoGenerateProxyClasses: int|bool|Nette\DI\Definitions\Statement
+# proxyNamespace: <string>
+# metadataDriverImpl: <service>
+# #entityNamespaces: array
+# customStringFunctions: <mixed>
+#  customNumericFunctions: <mixed>
+# customDatetimeFunctions: <mixed>
+# customHydrationModes: <string>
+# classMetadataFactoryName: <string>
+# defaultRepositoryClassName: <string>
+# namingStrategy: <class>
+# quoteStrategy: <class>
+# entityListenerResolver: <class>
+# repositoryFactory: <class>
+# defaultQueryHints: <mixed>
+#  filters:
+#    <string>:
+#    class: <string>
+#    enabled: <boolean>
+
+# entityManagerDecoratorClass: <class>
+# configurationClass: <class>
+
+# minimal configuration
+# nettrine.orm:
+#    configuration:
+#      autoGenerateProxyClasses: %debugMode%
+
+nettrine.migrations:
+    table: <string>
+    column: <string>
+    directory: <path>
+    namespace: <string>
+#   versionsOrganization: null|'year'|'year_and_month'
+    customTemplate: <null|path>
+
+# minimal configuration
+# nettrine.migrations:
+# directory: %appDir%/migrations
