@@ -9,9 +9,11 @@ use Nette\Application\Responses\JsonResponse;
 use Nette\Database\Context;
 use Nette\Database\Table\ActiveRow;
 use Nette\Database\Table\Selection;
+use Nette\SmartObject;
 
 class CategoryRepository extends DatabaseManager
 {
+use SmartObject;
 
     public const TABLE_NAME = 'category';
     public const COLUMN_ID = 'category_id';
@@ -20,46 +22,67 @@ class CategoryRepository extends DatabaseManager
     public const COLUMN_HIDDEN = 'hidden';
     public const COLUMN_ORDER = 'order_no';
     public const COLUMN_URL = 'url';
+    private ProductRepository $productRepository;
 
-    public function getById(int $id): Category
+    public function __construct(
+        ProductRepository $productRepository,
+        Context $database
+    )
     {
-        return new Category ($id, 'Jablka');
+        parent::__construct($database);
+        $this->productRepository = $productRepository;
+        $this->database = $database;
     }
 
-//    public Context $database;
-    public function getAll():array
+    public function getById(int $id): ?ActiveRow
     {
-        return [
-            new Category(1, 'obyvaci-pokoj'),
-            new Category(2, 'kvetinace'),
-            new Category(3, 'zaclony'),
-            new Category(4, 'sklenene-kvetinace'),
-            new Category(5, 'kuchyne'),
-            new Category(6, 'koupelny'),
-            new Category(9, 'loznice'),
-            new Category(10, 'keramicke-kvetinace'),
-        ];
+        return $this->getAll()->get($id);
+    }
+//    public function getById(int $id): Category
+//    {
+//        return new Category ($id, 'Jablka');
+//    }
 
- //return $this->database->table('category');
+//    public Context $database;
+    public function getAll(): Selection
+    {
+        return $this->database->table('category');
+
+//        return [
+//            new Category(1, 'obyvaci-pokoj'),
+//            new Category(2, 'kvetinace'),
+//            new Category(3, 'zaclony'),
+//            new Category(4, 'sklenene-kvetinace'),
+//            new Category(5, 'kuchyne'),
+//            new Category(6, 'koupelny'),
+//            new Category(9, 'loznice'),
+//            new Category(10, 'keramicke-kvetinace'),
+//        ];
+
     }
 
     /**
-     * Vrátí URL adresu první kategorie, do které produkt spadá.
-     * @param int $productId ID produktu
-     * @return string URL adresa první kategorie, do které produkt spadá nebo prázdný string, pokud nespadá do žádné
+     * Vrátí ID produktu, z danej kategorie.
+     * @param int $categoryId ID categorie
+     * @return Selection ID produktu, z danej kategorie
      */
-    public function getProductsOfCategory($categoryId)
+    public function getProductsByCategoryId($categoryId)
     {
-        if ($row = $this->database
-            ->table(ProductRepository::TABLE_NAME . '_' . self::TABLE_NAME)
-            ->where(COLUMN_ID = $categoryId)
-            ->fetch()
-        ) {
-            return $row->ref(self::TABLE_NAME)->url;
-        } else {
-            return '';
-        }
+        return $this->getAll()->where('category_id', $categoryId);
     }
+
+//    /**
+//     * Vrátí ID kategorií, ve kterých je zařazený daný produkt.
+//     * @param int $productId ID produktu
+//     * @return array ID kategorií, ve kterých je zařazený daný produkt
+//     */
+//    public function getProductCategories($productId)
+//    {
+//        return $this->database->table(ProductManager::TABLE_NAME . '_' . self::TABLE_NAME)
+//            ->select(self::COLUMN_ID)
+//            ->where(ProductManager::COLUMN_ID, array($productId))
+//            ->fetchPairs(null, self::COLUMN_ID);
+//    }
     /**
      * Vrátí všechny kategorie produktů.
      * @return array kategorie produktů
