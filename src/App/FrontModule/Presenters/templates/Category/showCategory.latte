@@ -4,7 +4,10 @@
     <div>{$category->title}</div>
     <div>category_id: {$category->category_id}</div>
     <div>url:  {$category->url}</div>
-
+    {foreach $products as $product}
+        <div>ID: {$product->product_id},category_id: {$product->category_id},URL: {$product->url},</div>
+{*        <h2><a href="{link Category:showCategory $category->category_id}">{$category->title}</a></h2>*}
+    {/foreach}
 {*    {foreach $categories as $category}*}
 {*        <div>{$category->get($category)}</div>*}
 {*        <div></div>*}

@@ -40,9 +40,26 @@ class CategoryRepository extends DatabaseManager
             new Category(10, 'keramicke-kvetinace'),
         ];
 
- return $this->database->table('category');
+ //return $this->database->table('category');
     }
 
+    /**
+     * Vrátí URL adresu první kategorie, do které produkt spadá.
+     * @param int $productId ID produktu
+     * @return string URL adresa první kategorie, do které produkt spadá nebo prázdný string, pokud nespadá do žádné
+     */
+    public function getProductsOfCategory($categoryId)
+    {
+        if ($row = $this->database
+            ->table(ProductRepository::TABLE_NAME . '_' . self::TABLE_NAME)
+            ->where(COLUMN_ID = $categoryId)
+            ->fetch()
+        ) {
+            return $row->ref(self::TABLE_NAME)->url;
+        } else {
+            return '';
+        }
+    }
     /**
      * Vrátí všechny kategorie produktů.
      * @return array kategorie produktů

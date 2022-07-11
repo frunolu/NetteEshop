@@ -37,11 +37,10 @@ class CategoryPresenter extends Presenter
 ////        $this->database->query("SELECT * FROM category")->fetchAll();
 //    }
 
-
     public function renderShowCategory(int $categoryId): void
     {
         $this->template->category = $this->database->table('category')->get($categoryId);
-  //      $products = $this->database->table('product_category')->get($categoryId);
+      $this->template->products = $this->database->table('product')->fetchAll();
 //$this->template->products = $this->database->table('product')->get($strom);
        // Debugger::barDump($products);
 //        ->where('id', $categoryId);
