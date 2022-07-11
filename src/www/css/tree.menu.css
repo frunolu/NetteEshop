@@ -1,0 +1,62 @@
+/* Stromové navigační menu */
+
+nav.menu-tree {
+    overflow-x: hidden;
+}
+
+.nav-list>li>a, .nav-list>li>label {
+    padding: 10px 15px;
+}
+
+.nav-list>li>a, .nav-list>li>label {
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.nav-header {
+    display: block;
+    padding: 3px 15px;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 20px;
+    color: #999;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+    text-transform: uppercase;
+}
+
+.nav-list {
+    margin-left: 15px;
+    margin-bottom: 0;
+}
+
+.nav-list:first-child {
+    margin-left: 0px;
+}
+
+.nav-list label {
+    cursor: pointer;
+    margin-bottom: 0px;
+}
+.nav-list label:hover, .nav-list div.editor-node:hover {
+    text-decoration: none;
+    background-color: lightgrey;
+}
+
+.nav-list label::before {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    padding-right:5px;
+    content: "\e114";
+}
+
+.nav-list .divider {
+    height: 1px;
+    overflow: hidden;
+    background-color: #a8a8a8;
+    border-bottom: 1px solid #bebebe;
+}

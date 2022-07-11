@@ -17,8 +17,12 @@ final class RouterFactory
     public static function createRouter()
     {
         $router = new RouteList;
-//                $router[] = new Route('/category/<id>', 'homepage:showCategory');
+        $router[] = new Route('prihlaseni/', 'Sign:in');
+        $router[] = new Route('/category', 'Category:showCategory');
+        $router[] = new Route('/category/<id>', 'Category:showCategory');
+        $router[] = new Route('/product', 'Product:detail');
         $router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
-        return $router;
+        $router[] = new Route('<presenter>/<action>[/<id>]', ':admin:Homepage:default');
+                return $router;
     }
 }

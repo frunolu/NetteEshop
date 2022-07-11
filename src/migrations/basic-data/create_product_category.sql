@@ -41,7 +41,7 @@ CREATE TABLE `product_category` (
   KEY `category_id` (`category_id`),
   KEY `product_id` (`product_id`),
   CONSTRAINT `product_category_unique` UNIQUE (`product_id`, `category_id`),
-  CONSTRAINT `product_category_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
+  CONSTRAINT `product_category_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES produkt (`product_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `product_category_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`)

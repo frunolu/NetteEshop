@@ -1,0 +1,12 @@
+{block content}
+    ahoj
+{*    <div>{$category}</div>*}
+{*    <div>{$categoryName}</div>*}
+{*    <div>{$categoryId}</div>*}
+    {foreach $categories as $category}
+        <div>   </div>
+        <div>ID: {$category->category_id},title: {$category->title},URL: {$category->url},</div>
+        <h2><a href="{link Category:showCategory $category->category_id}">{$category->title}</a></h2>
+    {/foreach}
+
+{/block}

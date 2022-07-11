@@ -42,6 +42,6 @@ CREATE TABLE `product_e_order` (
   PRIMARY KEY (`product_e_order_id`),
   KEY `e_order_id` (`e_order_id`),
   KEY `product_id` (`product_id`),
-  CONSTRAINT `product_e_order_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
+  CONSTRAINT `product_e_order_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES produkt (`product_id`),
   CONSTRAINT `product_e_order_ibfk_2` FOREIGN KEY (`e_order_id`) REFERENCES `e_order` (`e_order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;

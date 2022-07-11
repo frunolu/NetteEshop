@@ -66,6 +66,6 @@ CREATE TABLE `e_order` (
   CONSTRAINT `e_order_ibfk_3` FOREIGN KEY (`seller_person_detail_id`) REFERENCES `person_detail` (`person_detail_id`),
   CONSTRAINT `e_order_ibfk_4` FOREIGN KEY (`buyer_person_detail_id`) REFERENCES `person_detail` (`person_detail_id`),
   CONSTRAINT `e_order_ibfk_5` FOREIGN KEY (`buyer_delivery_address_id`) REFERENCES `address` (`address_id`),
-  CONSTRAINT `e_order_ibfk_6` FOREIGN KEY (`delivery_product_id`) REFERENCES `product` (`product_id`),
+  CONSTRAINT `e_order_ibfk_6` FOREIGN KEY (`delivery_product_id`) REFERENCES produkt (`product_id`),
   CONSTRAINT `e_order_ibfk_7` FOREIGN KEY (`seller_bank_account_id`) REFERENCES `bank_account` (`bank_account_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;

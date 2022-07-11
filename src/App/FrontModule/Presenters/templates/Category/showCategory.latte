@@ -1,0 +1,20 @@
+{block content}
+{*    <div>{$test}</div>*}
+{*    <div>{$category}</div>*}
+    <div>{$category->title}</div>
+    <div>category_id: {$category->category_id}</div>
+    <div>url:  {$category->url}</div>
+
+{*    {foreach $categories as $category}*}
+{*        <div>{$category->get($category)}</div>*}
+{*        <div></div>*}
+{*    {/foreach}*}
+{*    <p><a n:href="Homepage:default">← zpět na výpis příspěvků</a></p>*}
+
+{*    <div class="date">{$post->created_at|date:'F j, Y'}</div>*}
+{*    <h1 n:block="categoryId">{$category->category_id}</h1>*}
+
+{*    <h1 n:block="title">{$category->title}</h1>*}
+
+{*    <div class="post">{$post->content}</div>*}
+{/block}

@@ -5,3 +5,7 @@ services:
 		class: App\Console\AddUserCommand
 		tags: [console.command: user:add]
 	- App\FrontModule\Model\Category\CategoryRepository
+	- App\FrontModule\Model\Product\ProductRepository
+	- App\CoreModule\DatabaseManager
+	- App\FrontModule\components\CategoryControl
+#	- App\FrontModule\Model\Category\Category

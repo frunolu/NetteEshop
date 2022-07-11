@@ -31,3 +31,7 @@ includes:
  #   autoExit: true
  #   url: http://nette-shop:90/
 #    lazy:false
+
+security:
+    users:
+        admin: secret123

@@ -6,6 +6,14 @@ namespace App\FrontModule\Model\Category;
 class Category
 {
 
+
+    /** Konstanty pro manipulaci s modelem. */
+    const
+        TABLE_NAME = 'category',
+        COLUMN_ID = 'category_id',
+        COLUMN_TITLE = 'title',
+        COLUMN_PARENT = 'parent_category_id';
+
     private int $id;
     private string $name;
 

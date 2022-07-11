@@ -1,0 +1,17 @@
+
+
+ <ul class="nav nav-list tree">
+	{foreach $categories as $categoryArray}
+		{* Deklarace pomocných proměných. *}
+		{var $category = $categoryArray['category'], $subcategories = $categoryArray['subcategories']}
+		{if $subcategories}
+			{* Vykreslení kategorie se sub-kategoriemi. *}
+			<li><label class="tree-toggler nav-header" data-path="{$category->url}">{$category->title}</label>
+			    {control categories, $subcategories}
+			</li>
+		{else}
+			{* Vykreslení kategorie bez sub-kategorií. *}
+			<li><a href="{plink :Eshop:Product: $category->url}" data-path="{$category->url}">{$category->title}</a></li>
+		{/if}
+	{/foreach}
+</ul>
