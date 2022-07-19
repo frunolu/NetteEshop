@@ -5,6 +5,7 @@ namespace App\Presenters;
 use App\FrontModule\Model\Category\Category;
 use App\FrontModule\Model\Category\CategoryRepository;
 use App\FrontModule\Model\Product\ProductCategoryRepository;
+use App\FrontModule\Model\Product\ProductRepository;
 use Nette;
 use Nette\Application\Responses\JsonResponse;
 use Nette\Application\UI\Presenter;
@@ -15,6 +16,7 @@ use Tracy\Debugger;
 
 class CategoryPresenter extends Presenter
 {
+    private ProductRepository $productRepository;
     private CategoryRepository $categoryRepository;
     private Category $category;
     /**
@@ -33,12 +35,14 @@ class CategoryPresenter extends Presenter
     public function __construct(
         CategoryRepository $categoryRepository,
         Context $database,
-        ProductCategoryRepository $productCategoryRepository
+        ProductCategoryRepository $productCategoryRepository,
+        ProductRepository $productRepository
     ) {
         parent::__construct();
         $this->categoryRepository = $categoryRepository;
         $this->database = $database;
         $this->productCategoryRepository = $productCategoryRepository;
+        $this->productRepository = $productRepository;
     }
 
 
@@ -54,10 +58,12 @@ class CategoryPresenter extends Presenter
         $this->template->category = $this->database->table('category')->get($categoryId);
         $this->template->products = $this->database->table('product')->fetchAll();
         $this->template->productsOfCategory = $this->productCategoryRepository->getProductsByCategoryId($categoryId);
+       // $this->template->productsNames = $this->productRepository->getAll()->getProductFromId($categoryId);
+
         //->get(ProductsOfCategory);
 
 //$this->template->products = $this->database->table('product')->get($strom);
-        // Debugger::barDump($products);
+ //        Debugger::barDump($this->template->productsNames);
 //        ->where('id', $categoryId);
         //       $this->template->test='ahojsss';
 //        $this->template->setParameters([

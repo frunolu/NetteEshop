@@ -22,6 +22,12 @@ class ProductCategoryRepository extends DatabaseManager
     {
         return $this->getAll()->where('category_id', $categoryId);
     }
+
+    public function getNameOfProductById($productId)
+    {
+        return $this->getAll()->where('product_id', $productId);
+
+}
     /**
      *
      * @ORM\Column(type="integer")

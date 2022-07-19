@@ -4,27 +4,35 @@ namespace App\FrontModule\Presenters;
 
 
 use App\FrontModule\Model\Product\Product;
+use App\FrontModule\Model\Product\ProductCategoryRepository;
 use App\FrontModule\Model\Product\ProductRepository;
 use App\FrontModule\Model\Category\Category;
 use App\FrontModule\Model\Category\CategoryRepository;
 use Nette;
 use Nette\Application\BadRequestException;
+use Nette\Database\Context;
 use Nette\Utils\ArrayHash;
 
 
-final class ProductPresenter extends Nette\Application\UI\Presenter
+class ProductPresenter extends Nette\Application\UI\Presenter
 {
     private ProductRepository $productRepository;
     private CategoryRepository $categoryRepository;
+    private ProductCategoryRepository $productCategoryRepository;
+    public Context $database;
 
     public function __construct(
         ProductRepository $productRepository,
-        CategoryRepository $categoryRepository
+        CategoryRepository $categoryRepository,
+        ProductCategoryRepository $productCategoryRepository,
+        Context $database
     )
     {
         parent::__construct();
         $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->productCategoryRepository = $productCategoryRepository;
+        $this->database = $database;
     }
 
 /**
@@ -49,15 +57,12 @@ public function renderDetail($url)
     $this->template->ratingWidget = ArrayHash::from(['name' => 'rating', 'after' => 'product_id']);
 }
 
-public function actionDefault($productId): void
-    {
 
+    public function renderDefault(int $productId): void
+    {
+         $this->template->productsNames = $this->productCategoryRepository->getNameOfProductById($productId);
     }
 
-    public function renderDefault(): void
-    {
-        echo "5";
-    }
 
 
 

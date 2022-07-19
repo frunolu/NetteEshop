@@ -20,17 +20,25 @@ class ProductRepository extends DatabaseManager
         COLUMN_STOCK = 'stock',
         COLUMN_IMAGE_COUNT = 'images_count';
 
+    /**
+     * @var Context
+     */
     public Context $database;
+
 
     public function getAll(): selection
     {
         return $this->database->table('product');
     }
 
-//    public function getProductFromId($productId): selection
-//    {
-//        return $this->getAll->where('product_id', $productId);
-//    }
+    /**
+     * @param $productId
+     * @return Selection
+     */
+    public function getProductNameFromId($productId): selection
+    {
+        return $this->database->getAll()->where('product_id', $productId);
+    }
 
 
     /**
@@ -47,16 +55,16 @@ class ProductRepository extends DatabaseManager
             ->where('NOT ' . self::COLUMN_HIDDEN)->fetch();
     }
 
-    /**
-     * Vrátí produkt podle ID.
-     * @param int $productId ID produktu
-     * @param null|string $columns sloupce pro SELECT, nebo null pro všechny sloupce
-     * @return bool|mixed|IRow produkt
-     */
-    public function getProductFromId($productId, $columns = null)
-    {
-        return $this->database->table(self::TABLE_NAME)
-            ->select($columns ? $columns : '*')
-            ->where(self::COLUMN_ID, array($productId))->fetch();
-    }
+//    /**
+//     * Vrátí produkt podle ID.
+//     * @param int $productId ID produktu
+//     * @param null|string $columns sloupce pro SELECT, nebo null pro všechny sloupce
+//     * @return bool|mixed|IRow produkt
+//     */
+//    public function getProductFromId($productId, $columns = null)
+//    {
+//        return $this->database->table(self::TABLE_NAME)
+//            ->select($columns ? $columns : '*')
+//            ->where(self::COLUMN_ID, array($productId))->fetch();
+//    }
 }
