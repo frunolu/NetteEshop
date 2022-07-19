@@ -4,16 +4,23 @@ namespace App\Presenters;
 
 use App\FrontModule\Model\Category\Category;
 use App\FrontModule\Model\Category\CategoryRepository;
+use App\FrontModule\Model\Product\ProductCategoryRepository;
 use Nette;
 use Nette\Application\Responses\JsonResponse;
 use Nette\Application\UI\Presenter;
 use Nette\Database\Context;
 use Nette\Database\Table\ActiveRow;
+use Nette\Database\Table\Selection;
 use Tracy\Debugger;
+
 class CategoryPresenter extends Presenter
 {
     private CategoryRepository $categoryRepository;
     private Category $category;
+    /**
+     * @var ProductCategoryRepository @inject
+     */
+    private ProductCategoryRepository $productCategoryRepository;
     /**
      * @var Category[]
      */
@@ -21,13 +28,17 @@ class CategoryPresenter extends Presenter
     /**
      * @var Context
      */
-    private $database;
+    public $database;
+
     public function __construct(
-        CategoryRepository $categoryRepository, Context $database)
-    {
+        CategoryRepository $categoryRepository,
+        Context $database,
+        ProductCategoryRepository $productCategoryRepository
+    ) {
         parent::__construct();
         $this->categoryRepository = $categoryRepository;
         $this->database = $database;
+        $this->productCategoryRepository = $productCategoryRepository;
     }
 
 
@@ -41,14 +52,14 @@ class CategoryPresenter extends Presenter
     public function renderShowCategory(int $categoryId): void
     {
         $this->template->category = $this->database->table('category')->get($categoryId);
-     $this->template->products = $this->database->table('product')->fetchAll();
-$this->template->productsOfCategory = $this->categoryRepository->getProductsByCategoryId($categoryId);
-          //->get(ProductsOfCategory);
+        $this->template->products = $this->database->table('product')->fetchAll();
+        $this->template->productsOfCategory = $this->productCategoryRepository->getProductsByCategoryId($categoryId);
+        //->get(ProductsOfCategory);
 
 //$this->template->products = $this->database->table('product')->get($strom);
-       // Debugger::barDump($products);
+        // Debugger::barDump($products);
 //        ->where('id', $categoryId);
- //       $this->template->test='ahojsss';
+        //       $this->template->test='ahojsss';
 //        $this->template->setParameters([
 //
 //

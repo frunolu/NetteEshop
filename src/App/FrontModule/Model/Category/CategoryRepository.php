@@ -66,7 +66,7 @@ use SmartObject;
      * @param int $categoryId ID categorie
      * @return Selection ID produktu, z danej kategorie
      */
-    public function getProductsByCategoryId($categoryId)
+    public function getProductsByCategoryId($categoryId):selection
     {
         return $this->getAll()->where('category_id', $categoryId);
     }

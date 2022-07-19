@@ -6,6 +6,7 @@ services:
 		tags: [console.command: user:add]
 	- App\FrontModule\Model\Category\CategoryRepository
 	- App\FrontModule\Model\Product\ProductRepository
+	- App\FrontModule\Model\Product\ProductCategoryRepository
 	- App\CoreModule\DatabaseManager
 	- App\FrontModule\components\CategoryControl
 #	- App\FrontModule\Model\Category\Category
