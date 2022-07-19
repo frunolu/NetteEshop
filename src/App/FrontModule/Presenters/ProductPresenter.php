@@ -49,7 +49,7 @@ public function renderDetail($url)
     $this->template->ratingWidget = ArrayHash::from(['name' => 'rating', 'after' => 'product_id']);
 }
 
-public function actionDefault(): void
+public function actionDefault($productId): void
     {
 
     }

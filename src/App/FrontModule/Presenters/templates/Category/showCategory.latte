@@ -11,8 +11,11 @@
 
     {foreach $productsOfCategory as $productOfCategory}
         <div>ID: {$productOfCategory}</div>
+        <div>product_category_id: {$productOfCategory->product_category_id},product_id: {$productOfCategory->product_id},category_id: {$productOfCategory->category_id},</div>
         {*        <h2><a href="{link Category:showCategory $category->category_id}">{$category->title}</a></h2>*}
+        <h2><a href="{link :Front:Product:default $productOfCategory->product_id}">product_id:  {$productOfCategory->product_id}</a></h2>
     {/foreach}
+
 {*    {foreach $categories as $category}*}
 {*        <div>{$category->get($category)}</div>*}
 {*        <div></div>*}
