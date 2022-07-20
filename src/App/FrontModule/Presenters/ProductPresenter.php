@@ -60,7 +60,7 @@ public function renderDetail($url)
 
     public function renderDefault(int $productId): void
     {
-         $this->template->productsNames = $this->productCategoryRepository->getNameOfProductById($productId);
+         $this->template->productsNames = $this->database->table('product')->where('product_id', $productId);
     }
 
 

@@ -4,5 +4,12 @@
 {*    <div>{$categoryId}</div>*}
 
 {foreach $productsNames as $productName}
-    <div> product_id: {$productName}</div>
+    <div> product_id: {$productName->product_id}</div>
+    <div> code: {$productName->code}</div>
+    <div> url: {$productName->url}</div>
+    <div>title: {$productName->title}</div>
+    <div>short description: {$productName->short_description}</div>
+    <div>price: {$productName->price}</div>
+    <div>stock: {$productName->stock}</div>
+
 {/foreach}

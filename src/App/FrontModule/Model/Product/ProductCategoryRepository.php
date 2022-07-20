@@ -20,7 +20,7 @@ class ProductCategoryRepository extends DatabaseManager
      */
     public function getProductsByCategoryId(int $categoryId):selection
     {
-        return $this->getAll()->where('category_id', $categoryId);
+        return $this->database->table('product_category')->where('category_id', $categoryId);
     }
 
     public function getNameOfProductById($productId)
