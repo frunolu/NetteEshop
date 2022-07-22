@@ -53,13 +53,22 @@ class CategoryPresenter extends Presenter
 ////        $this->database->query("SELECT * FROM category")->fetchAll();
 //    }
 
+    public function actionShowCategory($categoryId):void
+    {
+        $products = $this->database->table('product')
+            ->where (':product_category.category_id', $categoryId);
+
+        bdump($products->fetchAll());
+}
     public function renderShowCategory(int $categoryId): void
     {
+       $this->template->products = $this->database->table('product')
+            ->where (':product_category.category.category_id', $categoryId)
+       ->fetchAll();
         $this->template->category = $this->database->table('category')->get($categoryId);
-        $this->template->products = $this->database->table('product')->fetchAll();
+    //    $this->template->products = $this->database->table('product')->fetchAll();
         $this->template->productsOfCategory = $this->productCategoryRepository->getProductsByCategoryId($categoryId);
-       // $this->template->productsNames = $this->productRepository->getAll()->getProductFromId($categoryId);
-
+   //     $this->template->productsNames = $this->productRepository->getAll()->getProductFromId($categoryId);
         //->get(ProductsOfCategory);
 
 //$this->template->products = $this->database->table('product')->get($strom);
@@ -77,6 +86,7 @@ class CategoryPresenter extends Presenter
 //        ]);
 //        var_dump($this->category);
     }
+
 
 //    /** Vrací JSON s kategoriemi.
 //     * @throws \Nette\Application\AbortException

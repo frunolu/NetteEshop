@@ -5,7 +5,8 @@
 {*    <div>{$categoryId}</div>*}
     {foreach $categories as $category}
         <div>   </div>
-        <div>ID: {$category->category_id},title: {$category->title},URL: {$category->url},</div>
+        <div>category_id: {$category->category_id},title: {$category->title},url: {$category->url},</div>
+        <div>order_no: {$category->order_no},hidden: {$category->hidden}, parent_category_id: {$category->parent_category_id}</div>
         <h2><a href="{link Category:showCategory $category->category_id}">{$category->title}</a></h2>
     {/foreach}
 

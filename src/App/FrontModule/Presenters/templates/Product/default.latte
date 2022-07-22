@@ -3,13 +3,28 @@
 {*    <div>{$categoryName}</div>*}
 {*    <div>{$categoryId}</div>*}
 
-{foreach $productsNames as $productName}
-    <div> product_id: {$productName->product_id}</div>
-    <div> code: {$productName->code}</div>
-    <div> url: {$productName->url}</div>
-    <div>title: {$productName->title}</div>
-    <div>short description: {$productName->short_description}</div>
-    <div>price: {$productName->price}</div>
-    <div>stock: {$productName->stock}</div>
-
+{foreach $products as $product}
+    <div> product_id: {$product->product_id}</div>
+    <div> code: {$product->code}</div>
+    <div> url: {$product->url}</div>
+    <div>title: {$product->title}</div>
+    <div>short description: {$product->short_description}</div>
+    <div>price: {$product->price} €</div>
+    <div>stock: {$product->stock} pcs</div>
+    <div class="col-md-3">
+{*   <a n:href="Property:default $product->product_id" class="property-card">*}
+            <div class="card" style="...">
+                <img src="{$product}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{$product->title}</h5>
+                    <p class="card-text">{$product->short_description|truncate:130}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">code {$product->code}</li>
+                    <li class="list-group-item">Nazov {$product->title}</li>
+                    <li class="list-group-item">Cena: {$product->price} e</li>
+                </ul>
+            </div>
+{*    </a>*}
+    </div>
 {/foreach}

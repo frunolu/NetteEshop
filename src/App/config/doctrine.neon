@@ -19,7 +19,7 @@ extensions:
 
 nettrine.orm.annotations:
   mapping:
-   App\Model\Database: %appDir%/Model/Database
+   App\Model: %appDir%/Model
 
 
 # Extension > Nettrine

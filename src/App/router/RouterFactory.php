@@ -20,6 +20,7 @@ final class RouterFactory
         $router[] = new Route('prihlaseni/', 'Sign:in');
         $router[] = new Route('/category', 'Category:showCategory');
         $router[] = new Route('/category/<id>', 'Category:showCategory');
+        $router[] = new Route('/produkty/<id>', 'Core:Product:default');
         $router[] = new Route('/product', 'Product:detail');
         $router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
         $router[] = new Route('<presenter>/<action>[/<id>]', ':admin:Homepage:default');

@@ -21,8 +21,9 @@ migrations:
     dbal: nette               # nextras, nette, doctrine or dibi
 
 includes:
+    - ../CoreModule/config/config.core.neon
     - service.neon
-#    - doctrine.neon
+#    - doctrine2.neon
 
 #console:
  #   name: Nette project
