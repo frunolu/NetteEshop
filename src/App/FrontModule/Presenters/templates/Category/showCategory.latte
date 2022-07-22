@@ -1,56 +1,63 @@
 {block content}
-{*    <div>{$test}</div>*}
-{*    <div>{$category}</div>*}
+    {*    <div>{$test}</div>*}
+    {*    <div>{$category}</div>*}
     <div>Category: {$category->title}</div>
     <div>category_id: {$category->category_id}</div>
-    <div>url:  {$category->url}</div>
-{*    {foreach $products as $product}*}
-{*        <div>ID: {$product->product_id},category_id: {$product->category_id},URL: {$product->url},</div>*}
-{*        <h2><a href="{link Category:showCategory $category->category_id}">{$category->title}</a></h2>*}
-{*    {/foreach}*}
-    {foreach $products  as $product}
-        <div class="col-md-3">
+    <div>url: {$category->url}</div>
+    {*    {foreach $products as $product}*}
+    {*        <div>ID: {$product->product_id},category_id: {$product->category_id},URL: {$product->url},</div>*}
+    {*        <h2><a href="{link Category:showCategory $category->category_id}">{$category->title}</a></h2>*}
+    {*    {/foreach}*}
+    <div class="row"
+    <div n:foreach= "$products  as $product" class="col-sm-4 col-lg-4 col-md-4">
+    <div class="thumbnail">
+
             {*   <a n:href="Property:default $product->product_id" class="property-card">*}
+
+
+
+
             <div class="card" style="...">
                     <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title"><a href="{link :Front:Product:default $product->product_id}">{$product->title}</a></h5>
+                        <h5 class="card-title">product_id: {$product->product_id} <a
+                                    href="{link :Front:Product:default $product->product_id}">{$product->title}</a>
+                        </h5>
                         <p class="card-text">{$product->short_description|truncate:130}</p>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">code {$product->code}</li>
                         <li class="list-group-item">Nazov {$product->title}</li>
                         <li class="list-group-item">Cena: {$product->price} e</li>
-                        <li class="list-group-item">short_description: {$product->short_description} e</li>
-                        <li class="list-group-item">description: {$product->description} e</li>
-                        <li class="list-group-item">stock: {$product->stock} e</li>
+                        <li class="list-group-item">short_description: {$product->short_description} </li>
+                        <li class="list-group-item">description: {$product->description}</li>
+                        <li class="list-group-item">stock: {$product->stock}</li>
                     </ul>
             </div>
 {*    </a>*}
         </div>
+    </div>
+    </div>     {*    {foreach $productsOfCategory as $productOfCategory}*}
+    {*        <div>ID: {$productOfCategory}</div>*}
+    {*        <div>product_category_id: {$productOfCategory->product_category_id},product_id: {$productOfCategory->product_id},category_id: {$productOfCategory->category_id},</div>*}
+    {*        *}{*        <h2><a href="{link Category:showCategory $category->category_id}">{$category->title}</a></h2>*}
+    {*        <h2><a href="{link :Front:Product:default $productOfCategory->product_id}">product_id:  {$productOfCategory->product_id}</a></h2>*}
+    {*    {/foreach}*}
+    {*{foreach $products as $product}*}
+    {*    <div>{$product->title}</div>*}
 
-    {/foreach}
-{*    {foreach $productsOfCategory as $productOfCategory}*}
-{*        <div>ID: {$productOfCategory}</div>*}
-{*        <div>product_category_id: {$productOfCategory->product_category_id},product_id: {$productOfCategory->product_id},category_id: {$productOfCategory->category_id},</div>*}
-{*        *}{*        <h2><a href="{link Category:showCategory $category->category_id}">{$category->title}</a></h2>*}
-{*        <h2><a href="{link :Front:Product:default $productOfCategory->product_id}">product_id:  {$productOfCategory->product_id}</a></h2>*}
-{*    {/foreach}*}
-{*{foreach $products as $product}*}
-{*    <div>{$product->title}</div>*}
+    {*{/foreach}*}
 
-{*{/foreach}*}
+    {*    {foreach $categories as $category}*}
+    {*        <div>{$category->get($category)}</div>*}
+    {*        <div></div>*}
+    {*    {/foreach}*}
+    {*    <p><a n:href="Homepage:default">← zpět na výpis příspěvků</a></p>*}
 
-{*    {foreach $categories as $category}*}
-{*        <div>{$category->get($category)}</div>*}
-{*        <div></div>*}
-{*    {/foreach}*}
-{*    <p><a n:href="Homepage:default">← zpět na výpis příspěvků</a></p>*}
+    {*    <div class="date">{$post->created_at|date:'F j, Y'}</div>*}
+    {*    <h1 n:block="categoryId">{$category->category_id}</h1>*}
 
-{*    <div class="date">{$post->created_at|date:'F j, Y'}</div>*}
-{*    <h1 n:block="categoryId">{$category->category_id}</h1>*}
+    {*    <h1 n:block="title">{$category->title}</h1>*}
 
-{*    <h1 n:block="title">{$category->title}</h1>*}
-
-{*    <div class="post">{$post->content}</div>*}
+    {*    <div class="post">{$post->content}</div>*}
 {/block}
