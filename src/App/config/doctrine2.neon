@@ -1,0 +1,47 @@
+parameters:
+
+    doctrine:
+        host: db
+        user: 'root'
+        password: 'toor'
+        dbname: mydb
+
+application:
+   errorPresenter: Error
+   mapping:
+      *: App\*Module\Presenters\*Presenter
+
+
+session:
+   expiration: 14 days
+
+
+di:
+   export:
+      parameters: no
+      tags: no
+
+extensions:
+    doctrine.annotations: Nettrine\Annotations\DI\AnnotationsExtension
+    doctrine.dbal: Nettrine\DBAL\DI\DbalExtension
+    doctrine.dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension
+    doctrine.orm: Nettrine\ORM\DI\OrmExtension
+    doctrine.orm.annotations: Nettrine\ORM\DI\OrmAnnotationsExtension
+    doctrine.orm.console: Nettrine\ORM\DI\OrmConsoleExtension
+    doctrine.cache: Nettrine\Cache\DI\CacheExtension
+    console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+
+doctrine.orm.annotations:
+    mapping:
+        App\Model: %appDir%/Model # Adresar kde to zacne hladat entity
+
+doctrine.dbal:
+    debug:
+        panel: %debugMode%
+    connection:
+        driver: pdo_mysql
+        host: %doctrine.host%
+        user: %doctrine.user%
+        password: %doctrine.password%
+        dbname: %doctrine.dbname%
+        port: 8889

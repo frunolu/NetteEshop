@@ -1,0 +1,26 @@
+{block content}
+<div class="row">
+    {foreach $items as $item}
+        <div class="col-md-3">
+            <a n:href="Property:default $item->id" class="property-card">
+                <div class="card" style="...">
+                    <img src="{$item->headImage|dataStream}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{$item->header|truncate:40}</h5>
+                        <p class="card-text">{$item->text|truncate:130}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{$item->cleanSize}m2</li>
+                        <li class="list-group-item">Poschodie {$item->floor} z {$item->totalFloorNumber}</li>
+                        <li class="list-group-item">Cena: {$item->price} e</li>
+                    </ul>
+                </div>
+            </a>
+        </div>
+    {/foreach}
+</div>
+<div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+</div>
+</div>
